@@ -1,5 +1,7 @@
 import "./App.css";
 import Counter from "./components/Counter";
+// import { counterProvider } from "./context/CounterContext";
+// import { initialState } from "./context/CounterContext";
 
 function App() {
 
