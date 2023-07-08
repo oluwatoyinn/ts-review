@@ -73,3 +73,48 @@ const Engineer: HumanWork = {
 };
 
 // Interfaces can only describe object shapes, type alias can describe any sort of types- object, function, union
+
+// Generics - Built-in
+
+// const nums: number[] = []
+const nums: Array<number> = [];
+const colors: Array<string> = [];
+
+// Generics - Created
+
+function identity<T>(item: T): T {
+  return item;
+}
+
+identity<string>("checking");
+identity<number>(3);
+
+const getRandomElement = <T,>(list: T[]): T => {
+  const randIn = Math.floor(Math.random() * list.length);
+  return list[randIn];
+};
+
+getRandomElement<string>(["a", "b", "c"]);
+getRandomElement([2, 33, 32, 78]);
+
+const merge = <T extends object, U extends object>(obj1: T, obj2: U) => {
+  return {
+    ...obj1,
+    ...obj2,
+  };
+};
+
+const combination = merge(
+  { name: "Victor" },
+  { hobby: ["driving", "reading"] }
+);
+
+interface Lengthy {
+  length: number;
+}
+
+const printLengthy = <T extends Lengthy>(thing: T): number => {
+  return thing.length * 2;
+};
+
+
