@@ -117,4 +117,22 @@ const printLengthy = <T extends Lengthy>(thing: T): number => {
   return thing.length * 2;
 };
 
+  
+// narrowing with the In operator
+interface Movie {
+  title: string;
+  duration: number;
+}
 
+interface TVShow {
+  title: string;
+  numEpisodes: number;
+  epiDuration: number;
+}
+
+const getRunTime = (media: Movie | TVShow) => {
+  if ("numEpisodes" in media) {
+    return media.numEpisodes * media.epiDuration;
+  }
+  return media.duration;
+};
